@@ -3,14 +3,31 @@ const horasText = document.querySelector('.horas')
 const minutosText = document.querySelector('.minutos')
 const segundosText = document.querySelector('.segundos')
 
+const diasResponsive = document.querySelector('.d')
+const horasResponsive = document.querySelector('.h')
+const minutosResponsive = document.querySelector('.m')
+const segundosResponsive = document.querySelector('.s')
+
 
 function render(dias, horas, minutos, segundos) {
-    diasText.innerHTML = dias
-    horasText.innerHTML = horas
-    minutosText.innerHTML = minutos
-    segundosText.innerHTML = segundos
+    diasText.innerHTML = dias < 9 ? '0' + dias : dias
+    horasText.innerHTML = horas < 9 ? '0' + horas : horas
+    minutosText.innerHTML = minutos < 9 ? '0' + minutos : minutos
+    segundosText.innerHTML = segundos < 9 ? '0' + segundos : segundos
+
 }
 
+const renderResponsive = () => {
+    const largura = window.innerWidth < 600
+    if (largura) {
+        diasResponsive.innerHTML = 'Dias'
+        horasResponsive.innerHTML = 'Hs'
+        minutosResponsive.innerHTML = 'Min'
+        segundosResponsive.innerHTML = 'Seg'
+    }
+}
+
+renderResponsive()
 
 const regressivo = () => {
     const dateNow = new Date()
